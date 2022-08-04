@@ -26,8 +26,7 @@ pipeline {
            }
            stage('deploy') {
             steps {
-                sshagent(['tomcatcredentials']) {
-                  sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/javawebapp/target/maven-web-application.war ec2-user@13.126.141.194:/opt/apache-tomcat-9.0.65/webapps"
+                ansiblePlaybook credentialsId: 'tomcatec2credentials', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'deploy.yml'
                  }
             }
         }
