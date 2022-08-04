@@ -15,7 +15,7 @@ pipeline {
 
             }
         }
-        stage('sonar') {
+        /*stage('sonar') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                 sh "mvn sonar:sonar"
@@ -23,7 +23,7 @@ pipeline {
 
             }
 
-           }
+           }*/
            stage('deploy') {
             steps {
                 ansiblePlaybook credentialsId: 'tomcatec2credentials', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'deploy.yml'
