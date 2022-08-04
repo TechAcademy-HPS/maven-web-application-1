@@ -1,0 +1,8 @@
+- hosts: all
+   become: true
+   tasks:
+     - name: Copy war file to tomcatserver
+       copy: 
+	         src: target/maven-web-application.war
+           dest: /opt/tomcat/webapps/maven-web-application.war
+             
