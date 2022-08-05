@@ -3,4 +3,4 @@
     - name: Test connection
       copy:
         src: target/maven-web-application.war
-        dest: /opt/tomcat/webapps/maven-web-application.war
+        dest: /opt/apache-tomcat-9.0.65/webapps/maven-web-application.war
