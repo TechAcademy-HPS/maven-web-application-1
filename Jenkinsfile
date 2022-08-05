@@ -26,7 +26,7 @@ pipeline {
            }*/
            stage('deploy') {
             steps {
-                ansiblePlaybook credentialsId: 'tomcatec2credentials', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'Deploy.yml'
+               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'Deploy.yml'
                  }
             }
         }
