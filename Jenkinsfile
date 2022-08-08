@@ -1,8 +1,7 @@
 
-
+def buildno = BUILD_NUMBER
 pipeline {
     agent any
-    def buildno = BUILD_NUMBER
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven3.6.3"
@@ -19,7 +18,7 @@ pipeline {
         }
         stage('build docker image') {
             steps {
-                   sh "docker build -t yoshithadocker/ltiproject:${buildno}"
+                   sh "docker build -t yoshithadocker/ltiproject"
                 }
 
             }
