@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    def buildno = BUILD_NUMBER
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven"
@@ -15,40 +15,19 @@ pipeline {
 
             }
         }
-        stage('sonar') {
+        stage('build docker image') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                sh "mvn sonar:sonar"
+                   sh "docker build -t yoshithadocker/ltiproject:${buildno}"
                 }
 
             }
 
-           }
-        stage('upload to nexus') {
-            steps {
-                nexusArtifactUploader artifacts: [
-				[
-				artifactId: 'maven-web-application',
-				classifier: '',
-				file: 'target/maven-web-application.war',
-				type: 'war'
-				]
-				],
-				credentialsId: 'nexuscredentials',
-				groupId: 'com.mt',
-				nexusUrl: '13.233.34.23:8081',
-				nexusVersion: 'nexus3',
-				protocol: 'http',
-				repository: 'mavenapp',
-				version: '0.0.1'
-
-            }
-        }	   
-           stage('deploy') {
+           }   
+           /*stage('deploy') {
             steps {
               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'Deploy.yml'
                  }
-            }
+            }*/
 			
         }
 }
