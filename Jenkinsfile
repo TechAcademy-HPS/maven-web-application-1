@@ -1,9 +1,11 @@
+
+
 pipeline {
     agent any
     def buildno = BUILD_NUMBER
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "maven"
+        maven "maven3.6.3"
     }
 
     stages {
@@ -17,12 +19,11 @@ pipeline {
         }
         stage('build docker image') {
             steps {
-                   sh "docker build -t yoshithadocker/ltiproject:${buildno} ."
+                   sh "docker build -t yoshithadocker/ltiproject:${buildno}"
                 }
 
             }
-
-           }   
+  
            /*stage('deploy') {
             steps {
               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'Deploy.yml'
