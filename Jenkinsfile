@@ -18,7 +18,7 @@ pipeline {
         }
         stage('build docker image') {
             steps {
-                   sh "docker build -t yoshithadocker/ltiproject"
+		    sh "docker build -t yoshithadocker/ltiproject:${buildno}"
                 }
 
             }
