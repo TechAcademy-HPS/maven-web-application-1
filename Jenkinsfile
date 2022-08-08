@@ -24,10 +24,32 @@ pipeline {
             }
 
            }*/
-           stage('deploy') {
+	stages {
+        stage('upload to nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [
+				[
+				artifactId: 'maven-web-application',
+				classifier: '',
+				file: 'target/maven-web-application-0.0.1.war',
+				type: 'war'
+				]
+				],
+				credentialsId: 'nexuscredentials',
+				groupId: 'com.mt',
+				nexusUrl: '13.234.113.188:8081',
+				nexusVersion: 'nexus3',
+				protocol: 'http',
+				repository: 'http://13.234.113.188:8081/repository/mywebapp/',
+				version: '0.0.1'
+
+            }
+        }	   
+           /*stage('deploy') {
             steps {
               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'Deploy.yml'
                  }
             }
+			*/
         }
 }
