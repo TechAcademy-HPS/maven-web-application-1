@@ -39,7 +39,7 @@ pipeline {
 				nexusUrl: '13.233.34.23:8081',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
-				repository: 'http://13.234.113.188:8081/repository/mywebapp/',
+				repository: 'mywebapp',
 				version: '0.0.1'
 
             }
