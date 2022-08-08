@@ -15,7 +15,7 @@ pipeline {
 
             }
         }
-        /*stage('sonar') {
+        stage('sonar') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                 sh "mvn sonar:sonar"
@@ -23,14 +23,14 @@ pipeline {
 
             }
 
-           }*/
+           }
         stage('upload to nexus') {
             steps {
                 nexusArtifactUploader artifacts: [
 				[
 				artifactId: 'maven-web-application',
 				classifier: '',
-				file: 'target/maven-web-application.war',
+				file: 'target/maven-web-application-0.0.1.war',
 				type: 'war'
 				]
 				],
@@ -39,16 +39,16 @@ pipeline {
 				nexusUrl: '13.233.34.23:8081',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
-				repository: 'mywebapp',
+				repository: 'http://13.234.113.188:8081/repository/mywebapp/',
 				version: '0.0.1'
 
             }
         }	   
-           /*stage('deploy') {
+           stage('deploy') {
             steps {
               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'Deploy.yml'
                  }
             }
-			*/
+			
         }
 }
