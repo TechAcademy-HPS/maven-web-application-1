@@ -10,9 +10,9 @@ pipeline {
 	environment {
         registry = "332303016470.dkr.ecr.ap-south-1.amazonaws.com/mydockerrepo"
     }
-    stages {
 	
-        stage('Build') {
+    stages {
+        stage('checkout') {
             steps {
                 git credentialsId: 'githubcredentials', url: 'https://github.com/TechAcademy-HPS/maven-web-application-1.git'
             }
