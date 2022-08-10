@@ -2,7 +2,7 @@ def buildno = BUILD_NUMBER
 pipeline {
     agent any
     environment{
-	   dockerpassword=credentials('dockercredentials')
+	   pswd=credentials('dockercredentials')
 	}
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -67,7 +67,7 @@ pipeline {
     
          stage('Push Docker Image'){
 		   steps {
-               sh "docker login -u yoshithadocker -p ${dockerpassword}"
+               sh "docker login -u yoshithadocker -p ${pswd}"
                sh 'docker push yoshithadocker/ltiproject:${buildno}'
              }
 			}
