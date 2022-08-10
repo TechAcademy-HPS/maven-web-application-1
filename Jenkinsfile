@@ -2,7 +2,7 @@ def buildno = BUILD_NUMBER
 pipeline {
     agent any
     environment{
-	   pswd=credentials('test')
+	   pswd=credentials('dkrpsswd')
 	}
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
