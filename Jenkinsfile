@@ -64,11 +64,13 @@ pipeline {
 		
     
          stage('Push Docker Image'){
+		   steps {
            withCredentials([string(credentialsId: 'dockercredentials', variable: '')]) {
              sh "docker login -u yoshithadocker -p ${dockercredentials}"
                }
                sh 'docker push yoshithadocker/ltiproject:${buildno}'
              }
+			}
 		
 	
           /* stage('deploy') {
