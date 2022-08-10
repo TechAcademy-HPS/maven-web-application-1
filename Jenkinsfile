@@ -2,7 +2,7 @@ def buildno = BUILD_NUMBER
 pipeline {
     agent any
     environment{
-	   dockerpassword=credentials('dkrpsswd')
+	   dockerpassword=credentials('dockercredentials')
 	}
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
