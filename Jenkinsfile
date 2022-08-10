@@ -68,7 +68,7 @@ pipeline {
          stage('Push Docker Image'){
 		   steps {
                sh "docker login -u yoshithadocker -p ${pswd}"
-               sh 'docker push yoshithadocker/ltiproject:${buildno}'
+               sh "docker push yoshithadocker/ltiproject:${buildno}"
              }
 			}
 		
