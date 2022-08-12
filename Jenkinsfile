@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git credentialsId: 'SSHKey', url: 'https://github.com/TechAcademy-HPS/maven-web-application-1.git'
+               git credentialsId: 'githubcredentials', url: 'https://github.com/TechAcademy-HPS/maven-web-application-1.git'
             }
         }
 	stage('Build') {
