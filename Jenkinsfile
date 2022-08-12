@@ -22,7 +22,7 @@ pipeline {
             }
         }
 		
-       /* stage('sonar') {
+        stage('sonar') {
             steps {
 		    script {
                 withSonarQubeEnv('SonarQube') {
@@ -49,13 +49,13 @@ pipeline {
 				],
 				credentialsId: 'nexuscredentials',
 				groupId: 'com.mt',
-				nexusUrl: '3.108.61.252:8081',
+				nexusUrl: '13.234.231.111:8081',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
 				repository: 'mavenapp',
 				version: '0.0.1'
             }
-        }*/
+        }
 		
 		stage('build docker image') {
             steps {
@@ -73,11 +73,11 @@ pipeline {
 			}
 		
 	
-          /* stage('deploy') {
+          stage('deploy') {
             steps {
               ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'Deploy.yml'
                  }
-            }*/
+            }
 			
         }
 }
