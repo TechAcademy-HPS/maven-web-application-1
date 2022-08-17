@@ -4,8 +4,7 @@
       copy:
         src: target/maven-web-application.war
         dest: /usr/local/tomcat7/webapps/maven-web-application.war
-       
-       notify:
+      notify:
       - start tomcat
       
   handlers:
