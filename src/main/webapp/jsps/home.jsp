@@ -10,6 +10,6 @@
 </head>
 <body>
 <h1 align="center">Welcome to LTI</h1>
-<h1 align="center"> LTI- Very Good Company for DevOps with AWS </h1>
+<h1 align="center"> LTI- Very Good Company for DevOps</h1>
 </body>
 </html>
