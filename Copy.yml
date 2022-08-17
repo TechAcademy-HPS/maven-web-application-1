@@ -4,10 +4,12 @@
       copy:
         src: target/maven-web-application.war
         dest: /usr/local/tomcat7/webapps/maven-web-application.war
-        notify:
-        - Restart tomcat
+       
+       notify:
+      - start tomcat
+      
   handlers:
-    - name: Restart tomcat
+    - name: start tomcat
       service:
         name: tomcat
         state: restarted
