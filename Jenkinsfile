@@ -22,7 +22,7 @@ pipeline {
             }
         }
 		
-        /*stage('sonar') {
+        stage('sonar') {
             steps {
 		    script {
                 withSonarQubeEnv('SonarQube') {
@@ -71,7 +71,6 @@ pipeline {
                sh "docker push yoshithadocker/ltiproject:${buildno}"
              }
 			}
-		*/
 	
           stage('deploy') {
             steps {
