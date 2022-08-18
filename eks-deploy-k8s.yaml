@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: spring-app
-  name: spring-app
+    app: springboot-app
+  name: springboot-app
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: spring-app
+      app: springboot-app
   template:
     metadata:
       labels:
-        app: spring-app
+        app: springboot-app
     spec:
       containers:
-      - name: my-spring-app
+      - name: my-springboot-app
         image: 332303016470.dkr.ecr.ap-south-1.amazonaws.com/mydockerrepo:latest
         imagePullPolicy: Always
         ports:
@@ -28,15 +28,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: spring-app
-    k8s-app: spring-app
-  name: spring-app
+    app: springboot-app
+    k8s-app: springboot-app
+  name: springboot-app
 spec:
   ports:
   - name: http
     port: 80
     protocol: TCP
     targetPort: 8085
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: spring-app
+    app: springboot-app
