@@ -49,7 +49,7 @@ pipeline {
 				],
 				credentialsId: 'nexuscredentials',
 				groupId: 'com.mt',
-				nexusUrl: '13.233.130.61:8081',
+				nexusUrl: '43.205.194.100:8081',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
 				repository: 'mavenapp',
