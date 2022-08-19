@@ -37,7 +37,7 @@ pipeline {
                  }
 	      }
            }
-        /*stage('upload to nexus') {
+        stage('upload to nexus') {
             steps {
                 nexusArtifactUploader artifacts: [
 				[
@@ -55,7 +55,7 @@ pipeline {
 				repository: 'mavenapp',
 				version: '0.0.1'
             }
-        }*/
+        }
 		
 		stage('build docker image') {
             steps {
